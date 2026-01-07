@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBM Maximo Training | Skillionair</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+html, body { width:100%; height:100%; font-family: Arial, Helvetica, sans-serif; scroll-behavior:smooth; }
+
+/* HEADER */
+header{
+  width:100%;
+  background:#ffffff;
+  padding:15px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:999;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+header h1{ color:#0d6efd; font-size:24px; }
+nav a{
+  margin-left:15px;
+  text-decoration:none;
+  color:#000;
+  font-weight:bold;
+  position:relative;
+  cursor:pointer;
+}
+nav a::after{
+  content:''; position:absolute; width:0; height:2px; background:#0d6efd; bottom:-5px; left:0; transition:0.3s;
+}
+nav a:hover::after{ width:100%; }
+
+/* SECTIONS */
+section{ display:none; width:100%; min-height:100vh; padding:50px 5%; opacity:0; transform:translateY(50px); transition: all 0.6s ease;}
+section.active{ display:block; opacity:1; transform:translateY(0); }
+
+/* HERO */
+.hero{
+  width:100%;
+  height:80vh; /* height reduced from 100vh to 80vh */
+  background: linear-gradient(rgba(13,110,253,0.7), rgba(13,110,253,0.7)),
+              url('https://images.unsplash.com/photo-1522071820081-009f0129c71c') center center no-repeat;
+  background-size: cover;
+  background-attachment: fixed; /* static image */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+  padding:0 5%;
+}
+.hero h2{ font-size:42px; margin-bottom:15px; animation: fadeInDown 1s ease forwards;}
+.hero p{ font-size:20px; max-width:600px; margin-bottom:20px; animation: fadeInUp 1s ease forwards; }
+.btn{
+  display:inline-block;
+  background:#ffc107;
+  color:#000;
+  padding:12px 25px;
+  border-radius:6px;
+  font-weight:bold;
+  margin:5px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.btn:hover{ transform: translateY(-5px); }
+
+/* OUR SERVICES */
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-bottom:50px;
+}
+.service-box{
+  background:#fff;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  text-align:center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.service-box i{ color:#ffc107; margin-bottom:10px; font-size:28px; }
+.service-box:hover{
+  transform: translateY(-10px);
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* FEATURES / ABOUT */
+/* ABOUT BACKGROUND & TEXT */
+.about-section{
+  background: linear-gradient(
+      rgba(230, 165, 165, 0.65),
+      rgba(0,0,0,0.65)
+    ),
+    url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d') center/cover no-repeat;
+  color:#fff;
+}
+
+.about-section h2{
+  font-size:38px;
+  margin-bottom:20px;
+}
+
+.about-text{
+  font-size:20px;
+  line-height:1.7;
+  max-width:900px;
+  margin-bottom:60px; 
+  color: #ebe8e8;
+}
+
+/* feature boxes spacing */
+.about-section .features{
+  display: block;
+}
+
+.about-section .feature{
+ margin-bottom: 20px;
+  
+}
+
+/* Courses Section Styling */
+.courses {
+  background-color: #abd1f7;  
+  padding: 40px 20px;        
+  border-radius: 10px;         
+}
+
+#courses h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.courses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* space between boxes */
+  justify-content: center;    /* center the boxes horizontally */
+}
+
+.course {
+  background-color: #ffffff;  /* white box inside the section */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  flex: 1 1 280px;           /* responsive width */
+  max-width: 350px;
+}
+
+
+/* CONTACT SECTION BACKGROUND */
+#contact{
+  background-color:#f0f4f8;   /* light grey-blue */
+  padding:50px 20px;
+}
+
+/* CONTACT BOX */
+/* CONTACT SECTION BACKGROUND */
+#contact{
+  background-color:#c9efc5;   /* soft light background */
+  padding:60px 20px;
+  text-align:center;
+}
+
+#contact h2{
+  margin-bottom:30px;
+}
+
+/* CONTACT BOX */
+.contact-box{
+  max-width:600px;
+  width:100%;
+  margin:auto;
+  background:#ffffff;
+  padding:40px;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.12);
+}
+
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+button{
+  width:100%;
+  background:#0d6efd;
+  color:#fff;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+
+/* FOOTER */
+footer{
+  width:100%;
+  background:#0b1c39;
+  color:#fff;
+  padding:40px 5%;
+  text-align:center;
+}
+footer a{ color:#ffc107; text-decoration:none; margin:0 5px; }
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h2{ font-size:32px; }
+  .hero p{ font-size:16px; }
+  header{ flex-direction:column; align-items:flex-start; }
+  nav{ margin-top:10px; }
+}
+
+/* ANIMATION KEYFRAMES */
+@keyframes fadeInDown{
+  0%{ opacity:0; transform:translateY(-30px); }
+  100%{ opacity:1; transform:translateY(0); }
+}
+@keyframes fadeInUp{
+  0%{ opacity:0; transform:translateY(30px); }
+  100%{ opacity:1; transform:translateY(0); }
+}
+
+/* REVIEW BOX */
+.review-box{
+  background:#fff;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  text-align:center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  min-width:300px;
+  max-width:350px;
+}
+.review-box img{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:10px;
+}
+.review-box:hover{
+  transform: translateY(-10px);
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* REVIEWS SLIDER */
+.reviews-slider{ overflow:hidden; padding:0 5%; }
+.reviews-track{ display:flex; gap:20px; transition:transform 0.2s linear; width:max-content; }
+
+/* FLOATING SOCIAL BUTTONS */
+.social-buttons{
+  position:fixed;
+  right:20px;
+  top:50%;
+  transform: translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:1000;
+}
+
+.social-btn{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+  cursor:pointer;
+  transition: transform 0.3s;
+}
+
+.social-btn:hover{
+  transform: scale(1.1);
+}
+
+.whatsapp{ background:#25d366; }
+.facebook{ background:#4267B2; }
+.twitter{ background:#1DA1F2; }
+.instagram{ background:#C13584; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Skillionair</h1>
+  <nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('courses')">Courses</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </nav>
+</header>
+
+<!-- HOME SECTION -->
+<section id="home" class="active">
+  <div class="hero">
+    <h2>IBM Maximo Training</h2>
+    <p>Industry-ready Functional & Technical IBM Maximo Training with Real-Time Scenarios</p>
+    <div class="btn" onclick="showSection('courses')">Our Courses</div>
+    <div class="btn" onclick="showSection('contact')">Book Free Demo</div>
+  </div>
+
+  <!-- OUR SERVICES -->
+  <h2 style="text-align:center; margin:50px 0 20px 0; color:#0d6efd;">Our Services</h2>
+  <div class="services" style="padding:0 5%;">
+    <div class="service-box">
+      <i class="fa-solid fa-chalkboard-user"></i>
+      <h3>Functional Training</h3>
+      <p>Learn Maximo modules like Asset, Work Orders, PM, Inventory & Purchasing.</p>
+    </div>
+    <div class="service-box">
+      <i class="fa-solid fa-gears"></i>
+      <h3>Technical Training</h3>
+      <p>Maximo architecture, Automation Scripts, Database, Integration, and Reporting.</p>
+    </div>
+    <div class="service-box">
+      <i class="fa-solid fa-briefcase"></i>
+      <h3>Live Projects</h3>
+      <p>Work on real-time simulated projects to gain practical knowledge and hands-on experience.</p>
+    </div>
+    <div class="service-box">
+      <i class="fa-solid fa-briefcase"></i>
+      <h3>Beginner to Advanced Mentorship</h3>
+      <p>Step-by-step guidance for freshers to experienced professionals.</p>
+    </div>
+    <div class="service-box">
+      <i class="fa-solid fa-briefcase"></i>
+      <h3>Interview Preparation</h3>
+      <p>Scenario-based interview questions, real project discussions & mock interviews.</p>
+    </div>
+    <div class="service-box">
+      <i class="fa-solid fa-users"></i>
+      <h3>Job Assistance</h3>
+      <p>Interview preparation, resume guidance and scenario-based question practice for job readiness.</p>
+    </div>
+  </div>
+
+  <!-- REVIEWS / TESTIMONIALS -->
+  <h2 style="text-align:center; margin:50px 0 20px 0; color:#0d6efd;">What Our Students Say</h2>
+  <div class="reviews-slider">
+    <div class="reviews-track" id="reviewsTrack">
+      <div class="review-box">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rohan Sharma">
+        <h4>Rohan Sharma</h4>
+        <p>"The Functional Training was excellent. Real-time examples helped me understand Maximo thoroughly."</p>
+        <p>⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="review-box">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Neha Kulkarni">
+        <h4>Neha Kulkarni</h4>
+        <p>"Technical Training was well-structured. I gained confidence to work on Maximo integrations."</p>
+        <p>⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="review-box">
+        <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Arjun Patil">
+        <h4>Arjun Patil</h4>
+        <p>"Live projects and scenario-based learning made Maximo easy to understand."</p>
+        <p>⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="review-box">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Deshmukh">
+        <h4>Priya Deshmukh</h4>
+        <p>"Job assistance and interview prep were top-notch. Highly recommend Skillionair."</p>
+        <p>⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="review-box">
+        <img src="https://randomuser.me/api/portraits/men/72.jpg" alt="Vikram Joshi">
+        <h4>Vikram Joshi</h4>
+        <p>"The trainers explained technical concepts in a simple way. Loved the hands-on practice."</p>
+        <p>⭐⭐⭐⭐⭐</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="about-section">
+  <h2>About Skillionair IBM Maximo Training</h2>
+  <p class="about-text">
+    Skillionair is a leading professional training initiative focused on IBM Maximo – the world’s leading
+    Enterprise Asset Management (EAM) solution.<br><br>
+    We empower students, IT professionals, and working executives to become job-ready in both
+    <strong>Functional</strong> and <strong>Technical</strong> aspects of Maximo.
+  </p>
+
+  <div class="features">
+    <div class="feature">
+      <strong>Industry-Oriented Training</strong><br>
+      Learn Asset & Location, Work Orders, PM, Inventory, Purchasing.
+    </div>
+    <div class="feature">
+      <strong>Technical Expertise</strong><br>
+      Maximo Architecture, DB, Automation Scripts, Integration, Reporting.
+    </div>
+    <div class="feature">
+      <strong>Real-Time Projects</strong><br>
+      Simulated projects to understand workflows and problem-solving.
+    </div>
+    <div class="feature">
+      <strong>Job Assistance & Interview Prep</strong><br>
+      Practical knowledge, scenario-based questions, resume guidance.
+    </div>
+  </div>
+</section>
+
+
+
+<!-- COURSES SECTION -->
+<section id="courses">
+  <h2>Our Courses</h2>
+  <div class="courses">
+    <div class="course">
+      <div>
+        <h3>IBM Maximo Functional Training</h3>
+        <p>Modules covered:</p>
+        <ul>
+          <li>Asset & Location Management</li>
+          <li>Work Orders & Preventive Maintenance (PM)</li>
+          <li>Inventory & Purchasing</li>
+          <li>Service & Job Plans</li>
+          <li>Beginner-friendly</li>
+        </ul>
+        <p><strong>Duration:</strong> 1 Hour / Day – 1 Month</p>
+      </div>
+    </div>
+    <div class="course">
+      <div>
+        <h3>IBM Maximo Technical Training</h3>
+        <p>Modules covered:</p>
+        <ul>
+          <li>Maximo Architecture & Setup</li>
+          <li>Database: DB2 / Oracle</li>
+          <li>Automation Scripts & Workflow</li>
+          <li>Integration Framework & Web Services</li>
+          <li>Reporting & Data Analysis</li>
+        </ul>
+        <p><strong>Duration:</strong> 1 Hour / Day – 1 Month</p>
+      </div>
+    </div>
+    <div class="course">
+      <div>
+        <h3>IBM Maximo Advanced Functional Training</h3>
+        <p>Modules covered:</p>
+        <ul>
+          <li>Advanced PM & Scheduling</li>
+          <li>Service Requests & SLAs</li>
+          <li>Asset Lifecycle Management</li>
+          <li>Reporting & Dashboards</li>
+          <li>Scenario-based Exercises</li>
+        </ul>
+        <p><strong>Duration:</strong> 1 Hour / Day – 1 Month</p>
+      </div>
+    </div>
+    <div class="course">
+      <div>
+        <h3>IBM Maximo Integration & Automation</h3>
+        <p>Modules covered:</p>
+        <ul>
+          <li>Automation Scripts & Workflow</li>
+          <li>Integration with External Systems</li>
+          <li>Data Migration Techniques</li>
+          <li>Custom Reports & BIRT</li>
+          <li>Hands-on Projects</li>
+        </ul>
+        <p><strong>Duration:</strong> 1 Hour / Day – 1 Month</p>
+      </div>
+    </div>
+    <div class="course">
+      <div>
+        <h3>IBM Maximo Reporting & Analytics</h3>
+        <p>Modules covered:</p>
+        <ul>
+          <li>BIRT Report Designer</li>
+          <li>Custom Reports & Dashboards</li>
+          <li>Data Analysis & KPIs</li>
+          <li>Real-time Data Insights</li>
+          <li>Hands-on Reporting Exercises</li>
+        </ul>
+        <p><strong>Duration:</strong> 1 Hour / Day – 1 Month</p>
+      </div>
+    </div>
+    <div class="course">
+      <div>
+        <h3>IBM Maximo Administration & Security</h3>
+        <p>Modules covered:</p>
+        <ul>
+          <li>User & Role Management</li>
+          <li>Security Groups & Access Control</li>
+          <li>System Configuration & Settings</li>
+          <li>Database Backup & Maintenance</li>
+          <li>Practical Admin Scenarios</li>
+        </ul>
+        <p><strong>Duration:</strong> 1 Hour / Day – 1 Month</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+  <h2>Contact Us</h2>
+
+  <div class="contact-box">
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Full Name">
+      <input type="email" id="email" placeholder="Email Address">
+      <input type="tel" id="mobile" placeholder="Mobile Number">
+      <textarea id="message" placeholder="Your Message"></textarea>
+      <button type="submit">Submit</button>
+      <p id="formMsg" style="color:green;font-weight:bold;"></p>
+    </form>
+  </div>
+</section>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Skillionair | IBM Maximo Training</p>
+  <p>
+    <a href="#">Facebook</a> |
+    <a href="#">Twitter</a> |
+    <a href="#">Google</a>
+  </p>
+</footer>
+
+<!-- FLOATING SOCIAL BUTTONS -->
+<div class="social-buttons">
+  <div class="social-btn whatsapp" onclick="window.open('https://wa.me/917261994409')"><i class="fab fa-whatsapp"></i></div>
+  <div class="social-btn facebook" onclick="window.open('https://facebook.com')"><i class="fab fa-facebook-f"></i></div>
+  <div class="social-btn twitter" onclick="window.open('https://twitter.com')"><i class="fab fa-twitter"></i></div>
+  <div class="social-btn instagram" onclick="window.open('https://instagram.com')"><i class="fab fa-instagram"></i></div>
+</div>
+
+<script>
+function showSection(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* CONTACT FORM */
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  let name=document.getElementById("name").value.trim();
+  let email=document.getElementById("email").value.trim();
+  let mobile=document.getElementById("mobile").value.trim();
+  let message=document.getElementById("message").value.trim();
+  let msgBox=document.getElementById("formMsg");
+
+  let whatsappMsg=`Name: ${name}%0AEmail: ${email}%0AMobile: ${mobile}%0AMessage: ${message}`;
+  window.open(`https://wa.me/917261994409?text=${whatsappMsg}`,"_blank");
+
+  msgBox.innerText="✅ Submitted successfully!";
+  document.getElementById("contactForm").reset();
+});
+
+/* REVIEWS SLIDER */
+const track = document.getElementById('reviewsTrack');
+let scrollPos = 0;
+
+function autoScroll(){
+  scrollPos += 0.5;
+  if(scrollPos >= track.scrollWidth / 2) scrollPos = 0;
+  track.style.transform = `translateX(-${scrollPos}px)`;
+}
+setInterval(autoScroll, 20);
+</script>
+
+</body>
+</html>
